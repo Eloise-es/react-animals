@@ -1,5 +1,6 @@
-import AnimalShow from "./AnimalShow";
+import "./App.css";
 import { useState } from "react";
+import AnimalShow from "./AnimalShow";
 
 export default function App() {
   // the state, and the setter function. Never update state without the setter function (never count = 3, only setCount(3))
@@ -21,11 +22,14 @@ export default function App() {
   });
 
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className="app">
+      <h1 className="title">Animal generator</h1>
+      <div className="subheading">
+        Click to add an animal. Click on an animal to give it some love!
+      </div>
       {/* pass in the event function on the event */}
       <button onClick={handleClick}>Add Animal</button>
-      <div>{renderedAnimals}</div>
+      <div className="animal-list">{renderedAnimals}</div>
     </div>
   );
 }
