@@ -1,3 +1,4 @@
+import "./AnimalShow.css";
 import { useState } from "react";
 import bird from "./svg/bird.svg";
 import cat from "./svg/cat.svg";
@@ -12,12 +13,25 @@ const svgMap = { bird, cat, cow, dog, gator, horse };
 export default function AnimalShow({ type }) {
   const [clicks, setClicks] = useState(0);
   const handleClick = () => {
-    setClicks(clicks + 1);
+    if (clicks >= 10) {
+      setClicks(10);
+    } else {
+      setClicks(clicks + 1);
+    }
   };
   return (
-    <div onClick={handleClick}>
-      <img src={svgMap[type]} alt={"An image of a " + type} />
-      <img src={heart} alt="heart" style={{ width: 10 + 10 * clicks + "px" }} />
+    <div className="animal-show" onClick={handleClick}>
+      <img
+        className="animal"
+        src={svgMap[type]}
+        alt={"An image of a " + type}
+      />
+      <img
+        className="heart"
+        src={heart}
+        alt="heart"
+        style={{ width: 10 + 10 * clicks + "px" }}
+      />
     </div>
   );
 }
